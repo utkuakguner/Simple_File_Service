@@ -1,0 +1,31 @@
+{
+    "name": "simple-file-service",
+    "scripts": {
+        "start": "bun run --hot src/index.ts",
+        "prod": "bun run src/index.ts",
+        "migrate": "npx prisma migrate dev --name migration",
+        "format": "npx prisma format",
+        "pm2:start": "pm2 start npm --name \"shopapper-api\" -- run prod",
+        "pm2:stop": "pm2 delete shopapper-api"
+    },
+    "dependencies": {
+        "@intlify/hono": "^0.1.1",
+        "@prisma/client": "^5.21.1",
+        "bun": "^1.1.26",
+        "colors": "^1.4.0",
+        "hono": "^4.5.5",
+        "zod": "^3.23.8"
+    },
+    "devDependencies": {
+        "@types/bun": "latest",
+        "@types/node": "^22.7.7",
+        "@types/node-cron": "^3.0.11",
+        "prisma": "^5.21.1",
+        "prompt-sync": "^4.2.0",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.6.3"
+    },
+    "prisma": {
+        "schema": "src/prisma/schema.prisma"
+    }
+}
