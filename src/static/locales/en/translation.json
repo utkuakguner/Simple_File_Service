@@ -1,11 +1,4 @@
 {
     "sessionExpired": "Session expired",
-    "unauthorized": "Unauthorized",
-    "missingToken": "Missing token",
-    "invalidToken": "Invalid token",
-    "loginFailed": "E-mail or password is incorrect",
-    "invalidPassword": "Invalid password",
-    "failedToCreateFile": "Failed to create file",
-    "failedToUpdateFile": "Failed to update file",
-    "failedToDeleteFile": "Failed to delete file"
+    "unauthorized": "Unauthorized"
 }

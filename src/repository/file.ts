@@ -8,11 +8,10 @@ interface FileDto {
 }
 
 export const createFile = async (
-    c: Context,
     p: PrismaClient,
     { fileName, localFileName }: FileDto
 ) => {
-    if (!fileName) throwInternalServerError(c.t('failedToCreateFile'));
+    if (!fileName || !localFileName) throwInternalServerError();
 
     try {
         const result = await p.file.create({
@@ -29,12 +28,11 @@ export const createFile = async (
 };
 
 export const updateFileById = async (
-    c: Context,
     p: PrismaClient,
     id: number,
     { fileName, localFileName }: FileDto
 ) => {
-    if (!fileName) throwInternalServerError(c.t('failedToUpdateFile'));
+    if (!fileName || !localFileName) throwInternalServerError();
 
     try {
         const result = await p.file.update({
@@ -54,11 +52,10 @@ export const updateFileById = async (
 };
 
 export const deleteFileById = async (
-    c: Context,
     p: PrismaClient,
     id: number
 ) => {
-    if (!id) throwInternalServerError(c.t('failedToDeleteFile'));
+    if (!id) throwInternalServerError();
 
     try {
         const data = await p.file.delete({
