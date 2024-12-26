@@ -31,7 +31,7 @@ const fileController = (r: Router, p: PrismaClient) => {
             console.error(err);
         }
 
-        await createFile(c, p, {
+        await createFile(p, {
             fileName: file.name,
             localFileName: fileName,
         });

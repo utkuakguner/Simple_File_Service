@@ -7,6 +7,7 @@
         "format": "npx prisma format",
         "pm2:start": "pm2 start npm --name \"simple-image-service\" -- run prod",
         "pm2:stop": "pm2 delete simple-image-service",
+        "pm2:restart": "npm run pm2:stop; npm run pm2:start",
         "command:local-load": "bun run src/command/localLoad.ts"
     },
     "dependencies": {
