@@ -9,18 +9,18 @@ import { serveStatic } from 'hono/bun';
 const controller = (app: Router, prisma: PrismaClient) => {
     const mainRouter = new Hono();
 
-    mainRouter.use('*', cors());
+    app.use(
+        '*',
+        cors({
+            origin: '*',
+            allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+            allowHeaders: ['Content-Type', 'Authorization'],
+        })
+    );
 
     mainRouter.get('/ping', async (c: Context) => c.text('Service online'));
 
     fileController(mainRouter, prisma);
-
-    app.use('/uploads/*', async (c: Context, next: Function) => {
-        const filePath = c.req.param('*');
-        const fileName = filePath.split('/').pop();
-        c.header('Content-Disposition', `attachment; filename="${fileName}"`);
-        await next();
-    });
 
     app.use('/uploads/*', serveStatic({ root: `./src` }));
 
